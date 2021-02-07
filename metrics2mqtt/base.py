@@ -145,7 +145,7 @@ class MQTTMetrics(object):
                     self._publish_metric(metric)
 
 
-def main():
+def get_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--name",
@@ -218,8 +218,11 @@ def main():
         default=None,
         metavar="NIC",
     )
+    return parser.parse_args()
 
-    args = parser.parse_args()
+
+def main():
+    args = get_arguments()
     system_name = args.name
     broker_host = args.broker
     broker_port = args.port
